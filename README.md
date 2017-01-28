@@ -1,6 +1,7 @@
 # README
 
 Demo api using jwt from pluralsight
+https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api
 
 This README would normally document whatever steps are necessary to get the
 application up and running.
