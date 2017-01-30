@@ -7,15 +7,15 @@ class AuthenticateHost
   end
 
   def call
-    JsonWebToken.encode(host_id: host.id) if host
+    JsonWebToken.encode(app_id: appl.id) if appl
   end
 
   private
   attr_accessor :name, :password
 
   def host
-    host = Host.find_by_name(name)
-    return host if host && host.authenticate(password)
+    appl = App.find_by_name(name)
+    return appl if appl && appl.authenticate(password)
 
     errors.add :host_authentication, 'invalid credentials'
     nil

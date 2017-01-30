@@ -6,15 +6,15 @@ class AuthorizeApiRequest
   end
 
   def call
-    host
+    appl
   end
 
   private
   attr_reader :headers
 
-  def host
-    @host ||= Host.find(decoded_auth_token[:host_id]) if decoded_auth_token
-    @host || errors.add(:token, 'Invalid token') && nil
+  def appl
+    @appl ||= App.find(decoded_auth_token[:app_id]) if decoded_auth_token
+    @appl || errors.add(:token, 'Invalid token') && nil
   end
 
   def decoded_auth_token
