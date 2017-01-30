@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170128032230) do
 
-  create_table "hosts", force: :cascade do |t|
+  create_table "apps", force: :cascade do |t|
     t.string   "name"
     t.string   "password_digest"
     t.datetime "created_at",      null: false

@@ -1,3 +1,3 @@
-class Host < ApplicationRecord
-  has_secure_password
+class App < ApplicationRecord
+  validates :name, presence: true, uniqueness: true
 end
