@@ -12,11 +12,10 @@
 
 ActiveRecord::Schema.define(version: 20170128032230) do
 
-  create_table "apps", force: :cascade do |t|
+  create_table "clients", force: :cascade do |t|
     t.string   "name"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "items", force: :cascade do |t|

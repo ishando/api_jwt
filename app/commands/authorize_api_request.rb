@@ -6,15 +6,15 @@ class AuthorizeApiRequest
   end
 
   def call
-    appl
+    client
   end
 
   private
   attr_reader :headers
 
-  def appl
-    @appl ||= App.find(decoded_auth_token[:app_id]) if decoded_auth_token
-    @appl || errors.add(:token, 'Invalid token') && nil
+  def client
+    @client ||= Client.find(decoded_auth_token[:client_id]) if decoded_auth_token
+    @client || errors.add(:token, 'Invalid token') && nil
   end
 
   def decoded_auth_token

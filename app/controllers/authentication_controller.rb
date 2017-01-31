@@ -3,7 +3,7 @@ class AuthenticationController < ApplicationController
 
   def authenticate
 #    command = AuthenticateHost.call(params[:name], params[:password])
-    command = AuthenticateApp.call(params[:name])
+    command = AuthenticateClient.call(params[:name])
 
     if command.success?
       render json: { auth_token: command.result }

@@ -6,4 +6,5 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-apps = App.create([{ name: 'App01' }, { name: 'App02' }])
+clients = Client.create([{ name: 'Client01' }, { name: 'Client02' }])
+puts "Created #{Client.count} Clients"
