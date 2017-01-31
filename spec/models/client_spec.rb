@@ -18,7 +18,13 @@ RSpec.describe Client, type: :model do
 
     it "validates multiple non-unique records" do
       expect(client1).to be_valid
-      expect{client3}.to raise_error(ActiveRecord::RecordInvalid)
+#      puts Client.find(client1.id).inspect
+#      expect( client3 ).to be_valid
+      expect{ client3 }.to raise_error(ActiveRecord::RecordNotUnique)
+#        .or raise_error(ActiveRecord::RecordInvalid)
+#        .or raise_error(SQLite3::ConstraintException)
+#      puts Client.last.inspect
+#      expect{ FactoryGirl.create(:client, name: client1.name) }.to raise_error(ActiveRecord::RecordInvalid)
     end
 
   end
