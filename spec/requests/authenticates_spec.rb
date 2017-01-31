@@ -15,13 +15,12 @@ RSpec.describe "Authenticates", type: :request do
 
     it "different jwts generated for different clients" do
       post '/authenticate', params: { name: client1.name }.to_json, headers: post_header
-      jwt1 = response.body
+      jwt1 = JSON.parse(response.body, :symbolize_names => true)
       post '/authenticate', params: { name: client2.name }.to_json, headers: post_header
-      jwt2 = response.body
-      puts "Response: #{response.body.inspect}"
+      jwt2 = JSON.parse(response.body, :symbolize_names => true)
       expect(response).to have_http_status(200)
       expect(response.body).to match(/^\{"auth_token":"[[:alnum:]]{36}\.[[:alnum:]]{83}\.[0-9a-zA-Z_.-]{43}"\}$/)
-      expect(jwt2).to_not eq(jwt1)
+      expect(jwt2[:auth_token]).to_not eq(jwt1[:auth_token])
     end
 
   end

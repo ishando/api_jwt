@@ -21,7 +21,7 @@ class AuthenticateClient
     client = Client.find_by_name(name)
     return client if client  # && appl.authenticate(password)
 
-    errors.add :client_authentication, 'invalid credentials'
+    errors.add :client_authentication, 'invalid client'
     nil
   end
 
