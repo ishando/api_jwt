@@ -8,3 +8,6 @@
 
 clients = Client.create([{ name: 'Client01' }, { name: 'Client02' }])
 puts "Created #{Client.count} Clients"
+
+admin = Admin.create([{ username: 'Admin01', password: 'test1234', password_confirmation: 'test1234' }])
+puts "Created #{Admin.count} Admins"
