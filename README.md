@@ -4,7 +4,7 @@ Demo api using jwt from pluralsight
 https://www.pluralsight.com/guides/ruby-ruby-on-rails/token-based-authentication-with-ruby-on-rails-5-api
 
 Get auth token:
-$ curl -H "Content-Type: application/json" -X POST -d '{"username":"adminuser", "password":"test1234", "client_name":"Client01"}' http://localhost:3000/authenticate
+$ curl -H "Content-Type: application/json" -X POST -d '{"username":"adminuser", "password":"xxxxxx", "client_name":"Client01"}' http://localhost:3000/authenticate
 
 Returns:
 {"auth_token":"xxxxxxxxxx.yyyyyyyyyyyy.zzzzzzzzzz"}
