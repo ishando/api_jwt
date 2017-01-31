@@ -5,7 +5,7 @@ require 'jwt'
 
 # path to your application root.
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
-@environment = ENV['RACK_ENV'] || 'development'
+@environment = Rails.env || 'development'
 @dbconfig = YAML.load(File.read('config/database.yml'))[@environment]
 @@secrets = YAML.load(File.read('config/secrets.yml'))[@environment]
 
