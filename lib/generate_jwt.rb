@@ -3,25 +3,28 @@ require "rails"
 require 'active_record'
 require 'jwt'
 
+
 # path to your application root.
 APP_ROOT = Pathname.new File.expand_path('../../',  __FILE__)
-@environment = Rails.env || 'development'
-@dbconfig = YAML.load(File.read('config/database.yml'))[@environment]
-@@secrets = YAML.load(File.read('config/secrets.yml'))[@environment]
+CURR_ENV = Rails.env || 'development'
+DBCONFIG = YAML.load(File.read('config/database.yml'))[CURR_ENV]
+puts DBCONFIG
 
-ActiveRecord::Base.establish_connection @dbconfig
-
-class Client < ActiveRecord::Base
-end
+ActiveRecord::Base.establish_connection DBCONFIG
 
 class GenerateJwt
+  class Client < ActiveRecord::Base
+  end
+
   def initialize(name)
+    puts CURR_ENV
+    secrets = YAML.load(File.read('config/secrets.yml'))[CURR_ENV]["secret_key_base"]
     client = Client.find_by_name(name)
     if client.nil?
       @auth = nil
     else
       payload = { client_id: client.id, iat: client.created_at, iss: 'notify' }
-      @auth = JWT.encode(payload, @@secrets["secret_key_base"])
+      @auth = JWT.encode(payload, secrets)
     end
   end
 
@@ -30,13 +33,3 @@ class GenerateJwt
   end
 end
 
-ARGV.each do|c|
-  puts "checking #{c}..."
-  token = GenerateJwt.new(c)
-
-  if token.get_auth.nil?
-    puts "#{c}: Not a valid client"
-  else
-    puts "#{c}: auth_token = #{token.get_auth}"
-  end
-end

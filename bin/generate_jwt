@@ -1,0 +1,15 @@
+#!/usr/bin/ruby
+APP_PATH = File.expand_path('../config/application', __dir__)
+require_relative '../config/boot'
+require_relative '../lib/generate_jwt'
+
+ARGV.each do|c|
+  puts "checking #{c}..."
+  token = GenerateJwt.new(c)
+
+  if token.get_auth.nil?
+    puts "#{c}: Not a valid client"
+  else
+    puts "#{c}: auth_token = #{token.get_auth}"
+  end
+end

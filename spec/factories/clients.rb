@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   sequence :clientN do |n|
-    "Client#{n}"
+    "Client%03d" % n
   end
 
   factory :client do
