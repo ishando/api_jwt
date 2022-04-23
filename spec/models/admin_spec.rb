@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Admin, type: :model do
 	context 'creating records' do
-		let(:admin1) { FactoryGirl.create(:admin) }
-		let(:admin2) { FactoryGirl.create(:admin) }
-		let(:admin3) { FactoryGirl.create(:admin, username: admin1.username) }
-		let(:admin4) { FactoryGirl.create(:admin, username: admin1.username.upcase) }
+		let(:admin1) { FactoryBot.create(:admin) }
+		let(:admin2) { FactoryBot.create(:admin) }
+		let(:admin3) { FactoryBot.create(:admin, username: admin1.username) }
+		let(:admin4) { FactoryBot.create(:admin, username: admin1.username.upcase) }
 
 		it 'validated single admin user' do
 			expect(admin1).to be_valid

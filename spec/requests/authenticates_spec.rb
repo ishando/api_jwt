@@ -3,9 +3,9 @@ require 'rails_helper'
 RSpec.describe "Authenticates", type: :request do
   context "POST authenticates" do
     let(:post_header) { { 'Content-Type': 'application/json' } }
-    let(:admin)   { FactoryGirl.create(:admin) }
-    let(:client1) { FactoryGirl.create(:client) }
-    let(:client2) { FactoryGirl.create(:client) }
+    let(:admin)   { FactoryBot.create(:admin) }
+    let(:client1) { FactoryBot.create(:client) }
+    let(:client2) { FactoryBot.create(:client) }
 
     it "jwt generated for client" do
       post '/authenticate', params: { username: admin.username, password: 'pass1234', client_name: client1.name }.to_json, headers: post_header

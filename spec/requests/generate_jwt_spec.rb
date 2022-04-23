@@ -3,7 +3,7 @@ require 'generate_jwt'
 
 RSpec.describe "GenerateJwt", type: :request do
   context "create jwt" do
-    let (:client) { FactoryGirl.create(:client, name: 'TestClient') }
+    let (:client) { FactoryBot.create(:client, name: 'TestClient') }
 
     it "produces jwt for valid client" do
       client

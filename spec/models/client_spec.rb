@@ -3,10 +3,10 @@ require 'rails_helper'
 RSpec.describe Client, type: :model do
 
   context "creating a record" do
-    let(:client1) { FactoryGirl.create(:client) }
-    let(:client2) { FactoryGirl.create(:client) }
-    let(:client3) { FactoryGirl.create(:client, name: 'TestDup') }
-    let(:client4) { FactoryGirl.create(:client, name: 'TestDup') }
+    let(:client1) { FactoryBot.create(:client) }
+    let(:client2) { FactoryBot.create(:client) }
+    let(:client3) { FactoryBot.create(:client, name: 'TestDup') }
+    let(:client4) { FactoryBot.create(:client, name: 'TestDup') }
 
     it "validates single record" do
       expect(client1).to be_valid

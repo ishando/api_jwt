@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require File.expand_path('../../config/boot', __FILE__)
+require_relative '../../config/boot'
 require "rails"
 #require "active_model/railtie"
 require 'active_record'

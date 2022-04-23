@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
 
   sequence :clientN do |n|
     "Client%03d" % n
